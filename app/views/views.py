@@ -40,21 +40,20 @@ def index():
 @main_bp.route('/music', methods=['POST'])
 def get_music():
     search_query = request.form['search_query']
-    songs = fetch_songs(search_query)
+    songs = songs_title(search_query)
     return jsonify(songs)
 
 
-def fetch_songs(search_query):
+def songs_title(search_query):
     url = f"https://eu.hitmotop.com/?s={search_query}"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
+
     song_blocks = soup.find_all('div', class_='content-inner')
 
-    songs = []
+    song_titles = []
     for song_block in song_blocks:
-        song_title = song_block.a.text
-        song_url = song_block.a['href']
+        song_title = song_block.find('h1', class_='').text.strip()
+        song_titles.append(song_title)
 
-        songs.append({'title': song_title, 'url': song_url})
-
-    return songs
+    return song_titles
