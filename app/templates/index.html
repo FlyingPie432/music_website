@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Search</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <title>Search Song</title>
 </head>
 <body>
-    <h1>Music Search</h1>
-    <form id="search-form">
-        <input type="text" id="search-query" name="search_query" placeholder="Enter song title">
+    <h1>Search Song</h1>
+    <form id="searchForm">
+        <input type="text" id="searchQuery" placeholder="Enter song name">
         <button type="submit">Search</button>
     </form>
-    <div id="song-results"></div>
+    <div id="songInfo"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
