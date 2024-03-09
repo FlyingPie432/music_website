@@ -1,21 +1,22 @@
 $(document).ready(function() {
     $('#searchForm').submit(function(event) {
         event.preventDefault();
+
         var searchQuery = $('#searchQuery').val();
         $.ajax({
             url: '/music',
             type: 'POST',
             data: {search_query: searchQuery},
             success: function(response) {
-                console.log(response); // Добавлено для проверки
                 if (response.length > 0) {
-                    var foundSong = response.find(song => song.title.toLowerCase() === searchQuery.toLowerCase());
-                    if (foundSong) {
-                        var audioHtml = foundSong.audio_link ? '<a href="' + foundSong.audio_link + '" download>Download Audio</a>' : 'No audio available';
-                        $('#songInfo').html('<p>Song Name : ' + foundSong.title + '</p><p>Author: ' + foundSong.author + '</p>' + '<p>Audio: ' + audioHtml + '</p>');
-                    } else {
-                        $('#songInfo').html('<p>No such song found</p>');
-                    }
+                    $('#songInfo').empty();
+                    response.forEach(function(song) {
+                        var songBlock = $('<div class="song-block"></div>'); // Создаем блок для песни
+                        songBlock.append('<p>Title: ' + song.title + '</p>'); // Добавляем название песни
+                        songBlock.append('<p>Author: ' + song.author + '</p>'); // Добавляем автора
+                        songBlock.append('<a href="' + song.audio_link + '">Listen</a>'); // Добавляем ссылку на аудио
+                        $('#songInfo').append(songBlock); // Добавляем блок на страницу
+                    });
                 } else {
                     $('#songInfo').html('<p>No songs found</p>');
                 }

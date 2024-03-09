@@ -13,8 +13,8 @@ def index():
 @main_bp.route('/music', methods=['POST'])
 def get_music():
     search_query = request.form.get('search_query')
-    song_info = song_search(search_query)
-    return jsonify(song_info)
+    songs_info = song_search(search_query)
+    return jsonify(songs_info)
 
 
 def song_search(search_query):
@@ -27,10 +27,7 @@ def song_search(search_query):
     for song_block in song_blocks:
         song_title = song_block.find('div', class_='track__title').text.strip()
         author = song_block.find('div', class_='track__desc').text.strip()
-        audio_link = song_block.find('a', class_='track__download-btn')['href'] if song_block.find('a',
-                                                                                                   class_='track__download-btn') else None
-        if audio_link:
-            audio_link += '?download=true'
+        audio_link = song_block.find('a', class_='track__download-btn')['href'] if song_block.find('a') else None
         songs_info.append({'title': song_title, 'author': author, 'audio_link': audio_link})
 
     return songs_info
