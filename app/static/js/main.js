@@ -11,7 +11,8 @@ $(document).ready(function() {
                 if (response.length > 0) {
                     var foundSong = response.find(song => song.title.toLowerCase() === searchQuery.toLowerCase());
                     if (foundSong) {
-                        $('#songInfo').html('<p>Title: ' + foundSong.title + '</p><p>Author: ' + foundSong.author + '</p>');
+                        var audioHtml = foundSong.audio_link ? '<a href="' + foundSong.audio_link + '" download>Download Audio</a>' : 'No audio available';
+                        $('#songInfo').html('<p>Song Name : ' + foundSong.title + '</p><p>Author: ' + foundSong.author + '</p>' + '<p>Audio: ' + audioHtml + '</p>');
                     } else {
                         $('#songInfo').html('<p>No such song found</p>');
                     }

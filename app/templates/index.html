@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Song</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/music-solid-24.png') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Search Song</h1>
-    <form id="searchForm">
-        <input type="text" id="searchQuery" placeholder="Enter song name">
-        <button type="submit">Search</button>
-    </form>
-    <div id="songInfo"></div>
+    <div class="container">
+        <div class="login-box">
+            <h1>Search Song</h1>
+        <form id="searchForm">
+            <div class="user-box">
+                <input type="text" id="searchQuery" name="" required="">
+                <label>Enter song name</label>
+            </div>
+            <button type="submit">Search</button>
+            <i class='bx bx-search-alt-2'></i>
+        </form>
+        <div id="songInfo"></div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
