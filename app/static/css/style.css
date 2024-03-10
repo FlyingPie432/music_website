@@ -1,5 +1,5 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
+
 body {
   margin: 0;
   padding: 0;
@@ -26,6 +26,7 @@ button {
 button:hover {
   background-color: #00bcd4;
 }
+
 .form-control {
   padding: 10px;
   border: 2px solid #ccc;
@@ -42,15 +43,15 @@ button:hover {
 }
 
 .song-block {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 20px;
-}
-.song-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Три одинаковых столбца */
-    grid-gap: 20px; /* Отступ между блоками */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
 }
 
+.song-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
